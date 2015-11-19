@@ -196,9 +196,9 @@
 
               setTimeout(function() {
                 $dom.bind('mouseleave', performUnflip);
-                if (!$dom.is(":hover")) {
-                  unflip($dom);
-                }
+                $dom.mouseleave(function(){
+			unflip($dom);
+		});
               }, (settings.speed + 150));
             };
 
