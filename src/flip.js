@@ -195,10 +195,9 @@
               flip($dom);
 
               setTimeout(function() {
-                $dom.bind('mouseleave', performUnflip);
-                $dom.mouseleave(function(){
-			unflip($dom);
-		});
+                $dom.mouseleave( function(){
+                	unflip($dom);		
+                });
               }, (settings.speed + 150));
             };
 
