@@ -190,15 +190,17 @@
           }
           else if (settings.trigger.toLowerCase() == "hover") {
             var performFlip = function() {
+			  //allows for the completion of a flip if the mouse leaves before the animation is complete
               $dom.unbind('mouseleave', performUnflip);
 
               flip($dom);
-
+			  //Complete the flip behavior and read the event handler to prepare and/or perform another flip 
               setTimeout(function() {
-                $dom.mouseleave( function(){
-                	unflip($dom);		
-                });
-              }, (settings.speed + 150));
+                $dom.bind('mouseleave', performUnflip);
+				if (!$dom.is(":hover")) {
+				  unflip($dom);
+                }
+              }, (settings.speed + 50));
             };
 
             var performUnflip = function() {
